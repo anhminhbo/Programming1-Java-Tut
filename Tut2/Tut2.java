@@ -51,10 +51,11 @@ public class Tutorial2 {
         return avg;
     }
     public static void q4(double money){
-        double moneyPaid = Math.floor(money * 100 / 3) / 100;
+        double moneyPaid = Math.floor(money  * 100 / 3)/100;
         System.out.println(moneyPaid);
-        int intMoney = (int) (money * 100);
+        int intMoney = (int) (money * 100 );
         int remainder = intMoney % 3;
+        System.out.println(remainder);
         if (remainder == 0){
             System.out.printf("Each person has to pay: %.2f ", moneyPaid);
         }
@@ -103,6 +104,11 @@ public class Tutorial2 {
         }
     }
     public static void main(String args[]){
-        q6();
+//        q1();
+//        q2();
+//        System.out.println(q3());
+        q4(10);
+//        q5();
+        //        q6();
     }
 }
