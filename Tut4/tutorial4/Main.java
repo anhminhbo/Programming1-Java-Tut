@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
 //        Scanner scanner = new Scanner(System.in);
 //        ArrayList<Ingredient> ingredientsList = new ArrayList<Ingredient>();
 //
@@ -23,14 +23,14 @@ public class Main {
 //        }
 //        displayIngredient(ingredientsList);
         Recipe r1 = new Recipe("first", 3);
-        for (int i = 0; i < 3; i++){
+        for (int i = 0; i < 3; i++) {
             r1.addComponent(i);
         }
         r1.display();
     }
 
-    public static void displayIngredient(ArrayList<Ingredient> list){
-        for (Ingredient ingredient: list){
+    public static void displayIngredient(ArrayList<Ingredient> list) {
+        for (Ingredient ingredient : list) {
             System.out.println(ingredient);
         }
     }

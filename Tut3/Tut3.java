@@ -1,24 +1,27 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class Tut3 {
     //    Exercise 2
-    public static int getIndexMin (int[] numbers) {
+    public static int getIndexMin(int[] numbers) {
 
-        return getIndexMinFrom(numbers,0);
+        return getIndexMinFrom(numbers, 0);
     }
-//    Exercise 3
-    public static int getIndexMinFrom (int[] numbers, int from) {
+
+    //    Exercise 3
+    public static int getIndexMinFrom(int[] numbers, int from) {
         int minIndex = from;
-        for (int i= from; i< numbers.length ; i++) {
-            if (numbers[i] < numbers[minIndex] ) minIndex = i;
+        for (int i = from; i < numbers.length; i++) {
+            if (numbers[i] < numbers[minIndex]) minIndex = i;
         }
 
         return minIndex;
     }
 
     //    Exercise 4
-    public static int[] exchangeMinFrom (int[] numbers, int from) {
-        int minIndex = getIndexMinFrom(numbers,from);
+    public static int[] exchangeMinFrom(int[] numbers, int from) {
+        int minIndex = getIndexMinFrom(numbers, from);
         int temp = numbers[minIndex];
         numbers[minIndex] = numbers[from];
         numbers[from] = temp;
@@ -27,52 +30,52 @@ public class Tut3 {
     }
 
     //    Exercise 5
-    public static int[] sortBySelection (int[] numbers) {
+    public static int[] sortBySelection(int[] numbers) {
 
-        for (int i= 0; i< numbers.length ; i++) {
-           numbers =  exchangeMinFrom(numbers,i);
+        for (int i = 0; i < numbers.length; i++) {
+            numbers = exchangeMinFrom(numbers, i);
         }
 
         return numbers;
     }
 
     //    Exercise 6
-    public static void uniqueNumbers () {
+    public static void uniqueNumbers() {
 // Take the input from user
-       Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         //           + to have at least 1 maatch
         String[] list = scanner.nextLine().split(" +");
         HashMap<String, Integer> map = new HashMap<String, Integer>();
-       while (true) {
-           boolean invalid = false;
-           for (String s : list) {
-               if (!s.matches("-?\\d")) {
-                   System.out.println("Please enter a valid list of valid integers");
-                   invalid = true;
-               }
-           }
+        while (true) {
+            boolean invalid = false;
+            for (String s : list) {
+                if (!s.matches("-?\\d")) {
+                    System.out.println("Please enter a valid list of valid integers");
+                    invalid = true;
+                }
+            }
 
-           if (invalid) continue;
+            if (invalid) continue;
 
-           break;
-       }
+            break;
+        }
 
-           for (int i = 0; i < list.length; i++) {
-               Integer freq = (Integer) map.get(list[i]);
+        for (int i = 0; i < list.length; i++) {
+            Integer freq = map.get(list[i]);
 //               map.put(list[i], (freq == null) ? 1 : new Integer(freq.intValue() + 1));
-               map.put(list[i], (freq == null) ? 1 : freq + 1);
+            map.put(list[i], (freq == null) ? 1 : freq + 1);
 
-           }
+        }
 
-           for (String s: map.keySet()){
-               if (map.get(s) == 1){
-                   System.out.print(s + " ");
-               }
-           }
+        for (String s : map.keySet()) {
+            if (map.get(s) == 1) {
+                System.out.print(s + " ");
+            }
+        }
 
     }
 
-        // Exercise 8
+    // Exercise 8
     /*
     a) 0 or 11 or 101
     0 | 11 | 101
@@ -105,16 +108,16 @@ public class Tut3 {
      */
 
     // Exercise 7
-    public static void swapString(){
+    public static void swapString() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the first string: ");
         String firstString = scanner.next();
         System.out.println("Enter the second string: ");
         String secondString = scanner.next();
         System.out.println("Strings before swap: 1st = " +
-                firstString + " and 2nd = "+ secondString);
+                firstString + " and 2nd = " + secondString);
         firstString = firstString + secondString;
-        secondString = firstString.substring(0,firstString.length() -
+        secondString = firstString.substring(0, firstString.length() -
                 secondString.length());
         firstString = firstString.substring(secondString.length());
         /*
@@ -123,36 +126,37 @@ public class Tut3 {
         firstString = firstString.replace(secondString, "");
          */
         System.out.println("Strings after swap: 1st = " +
-                firstString + " and 2nd = "+ secondString);
+                firstString + " and 2nd = " + secondString);
     }
 
     // Exercise 9
-    public static void displayGame(char[][] board){
-        for (char[] row: board){
-            for (char cell: row){
+    public static void displayGame(char[][] board) {
+        for (char[] row : board) {
+            for (char cell : row) {
                 System.out.print(cell);
             }
             System.out.println();
         }
     }
-    public static char endGame(char[][] board){
+
+    public static char endGame(char[][] board) {
         int BOARD_SIZE = 3;
-        char [] players = {'X', 'O'};
-        for (char player: players){
-            for (int row = 0; row < BOARD_SIZE; row++){
+        char[] players = {'X', 'O'};
+        for (char player : players) {
+            for (int row = 0; row < BOARD_SIZE; row++) {
                 if (board[row][0] == player && board[row][1] == player &&
                         board[row][2] == player)
                     return player;
             }
         }
-        for (char player: players){
-            for (int col = 0; col < BOARD_SIZE; col++){
+        for (char player : players) {
+            for (int col = 0; col < BOARD_SIZE; col++) {
                 if (board[col][0] == player && board[col][1] == player &&
                         board[col][2] == player)
                     return player;
             }
         }
-        for (char player: players){
+        for (char player : players) {
             if (board[0][0] == player && board[1][1] == player && board[2][2] ==
                     player)
                 return player;
@@ -160,27 +164,28 @@ public class Tut3 {
                     player)
                 return player;
         }
-        for(int row = 0; row < BOARD_SIZE; row++){
-            for(int col = 0; col < BOARD_SIZE; col++){
-                if (board[row][col] == '.'){
+        for (int row = 0; row < BOARD_SIZE; row++) {
+            for (int col = 0; col < BOARD_SIZE; col++) {
+                if (board[row][col] == '.') {
                     return '.';
                 }
             }
         }
         return ' ';
     }
+
     // Exercise 10
-    public static void playTicTacToe(){
-        char [] players = {'X', 'O'};
+    public static void playTicTacToe() {
+        char[] players = {'X', 'O'};
         int currentPlayer = 0;
         char[][] gameBoard = {
-                {'.','.','.'},
-                {'.','.','.'},
-                {'.','.','.'}
+                {'.', '.', '.'},
+                {'.', '.', '.'},
+                {'.', '.', '.'}
         };
         Scanner scanner = new Scanner(System.in);
         char finish = endGame(gameBoard);
-        while (finish == '.'){
+        while (finish == '.') {
             //game not finish , display the game board
             displayGame(gameBoard);
             // advance to the next player
@@ -195,26 +200,25 @@ public class Tut3 {
             //check game state
             finish = endGame(gameBoard);
         }
-        if (finish == ' '){
+        if (finish == ' ') {
             System.out.println("It's a tie");
-        }
-        else {
+        } else {
             System.out.println(players[currentPlayer] + " wins!");
         }
     }
 
-    public static void main(String args[]) {
-    //        Ex 2
-        System.out.println(getIndexMin(new int[]{0,1,6,5,4,3,3}));
+    public static void main(String[] args) {
+        //        Ex 2
+        System.out.println(getIndexMin(new int[]{0, 1, 6, 5, 4, 3, 3}));
 
         // Ex 3
-        System.out.println(getIndexMinFrom(new int[]{0,1,6,5,4,3,3},3));
+        System.out.println(getIndexMinFrom(new int[]{0, 1, 6, 5, 4, 3, 3}, 3));
 
 //        Ex 4
-        System.out.println(Arrays.toString(exchangeMinFrom(new int[]{0,1,6,5,4,3,3},3)));
+        System.out.println(Arrays.toString(exchangeMinFrom(new int[]{0, 1, 6, 5, 4, 3, 3}, 3)));
 
         //        Ex 5
-        System.out.println(Arrays.toString(sortBySelection(new int[]{0,1,6,5,4,3,3})));
+        System.out.println(Arrays.toString(sortBySelection(new int[]{0, 1, 6, 5, 4, 3, 3})));
 
         //        Ex 6
         uniqueNumbers();

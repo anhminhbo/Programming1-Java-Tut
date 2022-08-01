@@ -27,6 +27,7 @@ public class RecipeComponent {
         return ingredient;
     }
 
+
     public void setIngredient(Ingredient ingredient) {
         this.ingredient = ingredient;
     }
